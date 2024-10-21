@@ -3,15 +3,15 @@ import React from "react"
 
 
 
-const Home = () => {
+const Help = () => {
     return (
         <View style={styles.container}>
-            <Text>Home</Text>
+            <Text>Help</Text>
         </View>
     );
 }
 
-export default Home;
+export default Help;
 
 const styles = StyleSheet.create({
     container: {

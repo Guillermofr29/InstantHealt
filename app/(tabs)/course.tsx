@@ -1,17 +1,18 @@
 import { Text, View , StyleSheet } from "react-native"
 import React from "react"
+import { Courses } from "@/Components/Courses";
 
 
 
-const Home = () => {
+const Course = () => {
     return (
         <View style={styles.container}>
-            <Text>Home</Text>
+            <Courses/>
         </View>
     );
 }
 
-export default Home;
+export default Course;
 
 const styles = StyleSheet.create({
     container: {

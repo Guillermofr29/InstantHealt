@@ -28,7 +28,6 @@ export default function RootLayout() {
   return (
    
       <Stack>
-         <Text>Root Layout</Text>
         <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
       </Stack>
 

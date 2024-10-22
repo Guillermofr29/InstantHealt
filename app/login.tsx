@@ -5,7 +5,7 @@ import {getAuth, createUserWithEmailAndPassword,signInWithEmailAndPassword} from
 import {initializeApp} from "firebase/app";
 import {firebaseConfig} from "../firebaseConfig";
 
-const uri = "../assets/images/fondo_login.png"
+const uri = "../assets/images/loginfondo.jpeg"
 const profilepicture = "https://randomuser.me/api/portraits/men/1.jpg";
 
 
@@ -43,7 +43,7 @@ export default function Login({navigation} : any) {
 
     return (
         <View style={styles.container}>
-            <Image source={{ uri }} style={[styles.image,StyleSheet.absoluteFill]} />
+            <Image source={{ uri: uri }} style={[styles.image,StyleSheet.absoluteFill]} />
             <View style={{width:100,height:100,backgroundColor:'purple',position:'absolute', transform:[{rotate:'25deg'}]}}></View> 
             <View style={{width:100,height:100,backgroundColor:'red',top: 100,position:'absolute'}}></View>
             <View style={{width:100,height:100,backgroundColor:'blue',bottom:100,position:'absolute',borderRadius:50}}></View>
@@ -88,7 +88,8 @@ const styles = StyleSheet.create({
     image: {
         width:'100%',
         height:'100%',
-        resizeMode: 'cover'
+        resizeMode: 'cover',
+        
     },
     profilePicture:{
         width: 100,

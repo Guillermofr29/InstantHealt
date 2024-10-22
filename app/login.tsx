@@ -7,7 +7,39 @@ import {firebaseConfig} from "../firebaseConfig";
 
 const uri = "https://img.freepik.com/vector-premium/grupo-personas-equipo-medico-incluido-medico_1087929-7538.jpg?w=1060"
 const profilepicture = "https://randomuser.me/api/portraits/men/1.jpg";
+
+
+
 export default function Login() {
+    const [email, setEmail] = React.useState('');
+    const [password, setPassword] = React.useState('');
+    const app = initializeApp(firebaseConfig);
+
+    const auth = getAuth(app);
+
+    const handleCreateAccount= () => {
+      createUserWithEmailAndPassword(auth, email, password)
+      .then((userCredential) => {
+        console.log('Usuario creado');
+        const user = userCredential.user;
+        console.log(user);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+    }
+
+    const handleLogin = () => {
+      signInWithEmailAndPassword(auth, email, password)
+      .then((userCredential) => {
+        console.log('Usuario logueado');
+        const user = userCredential.user;
+        console.log(user);
+      }).catch((error) => {
+        console.log(error);
+      })
+    }
+
     return (
         <View style={styles.container}>
             <Image source={{ uri }} style={[styles.image,StyleSheet.absoluteFill]} />
@@ -26,16 +58,16 @@ export default function Login() {
                         <Image source={{uri: profilepicture}} style={styles.profilePicture}/>
                         <View>
                             <Text style={{fontSize:17,fontWeight:400,color:'white'}}>Email</Text>
-                            <TextInput style={styles.input} placeholder="gabo@outlook.com"/>
+                            <TextInput onChangeText={(text)=>setEmail(text)} style={styles.input} placeholder="gabo@outlook.com"/>
                         </View>
                         <View>
                             <Text style={{fontSize:17,fontWeight:400,color:'white'}}>Contraseña</Text>
-                            <TextInput style={styles.input} placeholder="password" secureTextEntry={true}/>
+                            <TextInput onChangeText={(text)=>setPassword(text)} style={styles.input} placeholder="password" secureTextEntry={true}/>
                         </View>
-                        <TouchableOpacity style={[styles.button, {backgroundColor: '#00CFEB90'}]}>
+                        <TouchableOpacity onPress={handleLogin} style={[styles.button, {backgroundColor: '#00CFEB90'}]}>
                             <Text style={{fontSize:17, fontWeight:400, color:'white'}}>Login</Text>
                         </TouchableOpacity>
-                        <TouchableOpacity style={[styles.button, {backgroundColor: '#6792F090'}]}>
+                        <TouchableOpacity onPress={handleCreateAccount} style={[styles.button, {backgroundColor: '#6792F090'}]}>
                             <Text style={{fontSize:17, fontWeight:400, color:'white'}}>Crear cuenta</Text>
                         </TouchableOpacity>
                     </View>

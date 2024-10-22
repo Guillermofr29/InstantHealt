@@ -1,12 +1,14 @@
 import { Text, View , StyleSheet } from "react-native"
 import React from "react"
+import Login from "../login";
+
 
 
 
 const Home = () => {
     return (
         <View style={styles.container}>
-            <Text>Home</Text>
+            <Login></Login>
         </View>
     );
 }

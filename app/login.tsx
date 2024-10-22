@@ -1,6 +1,9 @@
 import React from "react";
 import {Image,ScrollView,TouchableOpacity,TextInput,Button, Text, View, StyleSheet } from "react-native";
 import { BlurView } from "expo-blur";
+import {getAuth, createUserWithEmailAndPassword,signInWithEmailAndPassword} from "firebase/auth";
+import {initializeApp} from "firebase/app";
+import {firebaseConfig} from "../firebaseConfig";
 
 const uri = "https://img.freepik.com/vector-premium/grupo-personas-equipo-medico-incluido-medico_1087929-7538.jpg?w=1060"
 const profilepicture = "https://randomuser.me/api/portraits/men/1.jpg";

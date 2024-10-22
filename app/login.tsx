@@ -5,12 +5,12 @@ import {getAuth, createUserWithEmailAndPassword,signInWithEmailAndPassword} from
 import {initializeApp} from "firebase/app";
 import {firebaseConfig} from "../firebaseConfig";
 
-const uri = "https://img.freepik.com/vector-premium/grupo-personas-equipo-medico-incluido-medico_1087929-7538.jpg?w=1060"
+const uri = "../assets/images/fondo_login.png"
 const profilepicture = "https://randomuser.me/api/portraits/men/1.jpg";
 
 
 
-export default function Login() {
+export default function Login({navigation} : any) {
     const [email, setEmail] = React.useState('');
     const [password, setPassword] = React.useState('');
     const app = initializeApp(firebaseConfig);
@@ -35,6 +35,7 @@ export default function Login() {
         console.log('Usuario logueado');
         const user = userCredential.user;
         console.log(user);
+        navigation.navigate('Home');
       }).catch((error) => {
         console.log(error);
       })
@@ -87,7 +88,7 @@ const styles = StyleSheet.create({
     image: {
         width:'100%',
         height:'100%',
-        resizeMode: "cover",
+        resizeMode: 'cover'
     },
     profilePicture:{
         width: 100,

@@ -1,12 +1,11 @@
 import React from 'react';  
-import { Text } from 'react-native';
+import { Text, View } from 'react-native';
 
 export function Courses() {
   return (
-    <div>
+    <View>
       <Text>Course</Text>
-      <Text>Course</Text>
-    </div>
+    </View>
   );
 }
 

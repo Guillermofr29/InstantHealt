@@ -1,6 +1,11 @@
 import React, { useEffect } from "react";
-import { GestureResponderEvent, Pressable, StyleSheet, Text } from "react-native";
-import { Icon } from "@/Components/Icon";
+import {
+  GestureResponderEvent,
+  Pressable,
+  StyleSheet,
+  Text,
+} from "react-native";
+import { Icon } from "@/components/Icon";
 import Animated, {
   interpolate,
   useAnimatedStyle,
@@ -19,12 +24,11 @@ const TabBarButton = ({
   onPress: (event: GestureResponderEvent) => void;
   onLongPress: (event: GestureResponderEvent) => void;
   isFocused: Boolean;
-  routeName: string; 
+  routeName: string;
   color: string;
   label: string;
 }) => {
   const scale = useSharedValue(0);
-
 
   useEffect(() => {
     scale.value = withSpring(isFocused ? 1 : 0, { duration: 350 });
@@ -40,33 +44,36 @@ const TabBarButton = ({
     };
   });
 
-  
   const animatedTextStyle = useAnimatedStyle(() => {
     const opacity = interpolate(scale.value, [0, 1], [0, 1], "clamp");
-  
+
     return {
       opacity,
     };
   });
-  
+
   return (
     <Pressable
       onPress={onPress}
       onLongPress={onLongPress}
       style={style.tabbarItem}
     >
-      <Animated.View style={
-        animatedIconStyle
-      }>
-        {Icon[routeName] && Icon[routeName]({ color: isFocused ? "#FFF" : "#000", forceColor: true })}
+      <Animated.View style={animatedIconStyle}>
+        {Icon[routeName] &&
+          Icon[routeName]({
+            color: isFocused ? "#FFF" : "#000",
+            forceColor: true,
+          })}
       </Animated.View>
-      
+
       <Animated.Text
-        style={[{ color: isFocused ? "#FFF" : "#000", fontSize: 12 }, animatedTextStyle]}
+        style={[
+          { color: isFocused ? "#FFF" : "#000", fontSize: 12 },
+          animatedTextStyle,
+        ]}
       >
         {label}
       </Animated.Text>
-
     </Pressable>
   );
 };
@@ -81,4 +88,3 @@ const style = StyleSheet.create({
     gap: 5,
   },
 });
-

@@ -1,7 +1,7 @@
 import { Tabs } from "expo-router";
 import React from "react";
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import { TabBar } from '@/components/TabBar'
+import { TabBar } from '@/Components/TabBar'
 import { Text } from "react-native";
 
 

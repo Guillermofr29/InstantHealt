@@ -1,6 +1,6 @@
 import { Text, View , StyleSheet } from "react-native"
 import React from "react"
-import { Courses } from "@/components/Courses";
+import { Courses } from "@/Components/Courses";
 
 
 

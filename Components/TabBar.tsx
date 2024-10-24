@@ -7,7 +7,7 @@ import {
 } from "react-native";
 import React from "react";
 import { BottomTabBarProps } from "@react-navigation/bottom-tabs";
-import TabBarButton from "@/components/TabBarButton";
+import TabBarButton from "@/Components/TabBarButton";
 
 import Animated, {
   useAnimatedStyle,

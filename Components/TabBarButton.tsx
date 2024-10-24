@@ -5,7 +5,7 @@ import {
   StyleSheet,
   Text,
 } from "react-native";
-import { Icon } from "@/components/Icon";
+import { Icon } from "@/Components/Icon";
 import Animated, {
   interpolate,
   useAnimatedStyle,

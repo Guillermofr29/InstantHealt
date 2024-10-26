@@ -128,11 +128,9 @@ export default function Login({ navigation }: any) {
 
 const styles = StyleSheet.create({
   container: {
-    borderRadius: 20,
     flex: 1,
     justifyContent: "center",
     alignItems: "center",
-    backgroundColor: "#000", // Fondo negro para mayor contraste
   },
   image: {
     width: "100%",

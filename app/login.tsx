@@ -67,6 +67,7 @@ export default function Login({ navigation }: any) {
       >
         <BlurView intensity={90} style={{ borderRadius: 20 }}>
           <View style={styles.login}>
+          <Text style={{color: "white", fontSize:30}}>Bienvenido</Text>
             <Image
               source={{ uri: profilepicture }}
               style={styles.profilePicture}
@@ -109,7 +110,7 @@ export default function Login({ navigation }: any) {
         </BlurView>
         <TouchableOpacity
           onPress={handleCreateAccount}
-          style={[styles.button, { backgroundColor: "#5C6AE9" }]}
+          style={[styles.button, { backgroundColor: "#5C6AE9"}]}
         >
           <Text style={{ fontSize: 17, fontWeight: "400", color: "white" }}>
             {" "}
@@ -149,7 +150,7 @@ const styles = StyleSheet.create({
     padding: 20,
     borderRadius: 20,
     alignItems: "center",
-    backgroundColor: "rgba(255, 255, 255, 0.1)", // Fondo semitransparente
+    backgroundColor: "red", // Fondo semitransparente
   },
   input: {
     width: 250,

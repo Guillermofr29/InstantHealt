@@ -9,9 +9,10 @@ import { router, Slot, Stack } from "expo-router";
 
 SplashScreen.preventAutoHideAsync();
 
+
 export default function RootLayout() {
   useEffect(() => {
-    router.push("/login");
+    router.push("/(tabs)");
   });
 
   return <Slot />;

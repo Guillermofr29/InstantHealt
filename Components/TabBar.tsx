@@ -14,9 +14,6 @@ import Animated, {
   useSharedValue,
   withSpring,
 } from "react-native-reanimated";
-import Course from "@/app/(tabs)/course";
-import Call from "@/app/(tabs)/call";
-import Help from "@/app/(tabs)/help";
 
 export function TabBar({ state, descriptors, navigation }: BottomTabBarProps) {
   const [dimensions, setDimensions] = React.useState({
@@ -56,10 +53,8 @@ export function TabBar({ state, descriptors, navigation }: BottomTabBarProps) {
           {
             position: "absolute",
             backgroundColor: "#BE1622",
-            borderRadius: 30,
-            marginHorizontal: 3,
-            height: dimensions.height - 5,
-            width: buttonWidth - 5,
+            height: dimensions.height,
+            width: buttonWidth,
           },
         ]}
       />
@@ -117,21 +112,10 @@ const styles = StyleSheet.create({
   tabbar: {
     left: 0,
     right: 0,
-    position: "absolute",
-    bottom: 50,
     flexDirection: "row",
     justifyContent: "space-between",
     alignItems: "center",
     backgroundColor: "#fff",
-    marginHorizontal: 68,
     paddingVertical: 15,
-    borderRadius: 35,
-    shadowColor: "#000",
-    shadowOffset: {
-      width: 0,
-      height: 10,
-    },
-    shadowRadius: 10,
-    shadowOpacity: 0.1,
   },
 });

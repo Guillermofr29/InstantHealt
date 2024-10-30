@@ -6,6 +6,8 @@ import { Text, View } from "react-native";
 import Login from "@/app/login";
 import Home from "./(tabs)";
 import { router, Slot, Stack } from "expo-router";
+import 'react-native-reanimated'
+import 'react-native-gesture-handler'
 
 SplashScreen.preventAutoHideAsync();
 
@@ -14,6 +16,5 @@ export default function RootLayout() {
   useEffect(() => {
     router.push("/(tabs)");
   });
-
   return <Slot />;
 }

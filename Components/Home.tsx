@@ -26,7 +26,8 @@ function HomeComponent() {
         }}
       >
 
-        <Text style={{}} >Bienvenido,<br/>¿Que vamos a aprender hoy?</Text>
+        <Text style={{}} >Bienvenido,</Text>
+        <Text style={{}}>¿Que vamos a aprender hoy?</Text>
       </View>
       <View
         style={{
@@ -38,7 +39,7 @@ function HomeComponent() {
       >
         <View style={styles.card}>
           <Text style={styles.title}>
-            <b>Aprende lecciones de RCP en minutos</b>
+            <Text style={{fontWeight: 700}} >Aprende lecciones de RCP en minutos</Text>
           </Text>
           <Image source={require(uri)} style={styles.img} />
           <View style={styles.description}>
@@ -56,7 +57,7 @@ function HomeComponent() {
         </View>
         <View style={styles.card}>
           <Text style={styles.title}>
-            <b>Aprende lecciones de RCP en minutos</b>
+          <Text style={{fontWeight: 700}} >Aprende lecciones de RCP en minutos</Text>
           </Text>
           <Image source={require(uri)} style={styles.img} />
           <View style={styles.description}>
@@ -74,7 +75,7 @@ function HomeComponent() {
         </View>
         <View style={styles.card}>
           <Text style={styles.title}>
-            <b>Aprende lecciones de RCP en minutos</b>
+          <Text style={{fontWeight: 700}} >Aprende lecciones de RCP en minutos</Text>
           </Text>
           <Image source={require(uri)} style={styles.img} />
           <View style={styles.description}>
@@ -92,7 +93,7 @@ function HomeComponent() {
         </View>
         <View style={styles.card}>
           <Text style={styles.title}>
-            <b>Aprende lecciones de RCP en minutos</b>
+          <Text style={{fontWeight: 700}} >Aprende lecciones de RCP en minutos</Text>
           </Text>
           <Image source={require(uri)} style={styles.img} />
           <View style={styles.description}>

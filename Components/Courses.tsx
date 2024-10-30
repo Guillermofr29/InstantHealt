@@ -13,7 +13,7 @@ import Icon from "react-native-vector-icons/Ionicons";
 const uri = "../assets/images/manosconpastillas.jpg";
 export function Courses() {
   const courses = Array(12).fill({
-    title: "Lorem ipsum dolor sit ame"
+    title: "Primeros Auxilios"
   });
   return (
     <View style={styles.container}>

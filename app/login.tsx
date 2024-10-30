@@ -1,19 +1,7 @@
 import React from "react";
-import {
-  Image,
-  ScrollView,
-  TouchableOpacity,
-  TextInput,
-  Text,
-  View,
-  StyleSheet,
-} from "react-native";
+import {Image,ScrollView,TouchableOpacity,TextInput,Text,View,StyleSheet,Alert,} from "react-native";
 import { BlurView } from "expo-blur";
-import {
-  getAuth,
-  createUserWithEmailAndPassword,
-  signInWithEmailAndPassword,
-} from "firebase/auth";
+import {getAuth,createUserWithEmailAndPassword,signInWithEmailAndPassword,} from "firebase/auth";
 import { initializeApp } from "firebase/app";
 import { firebaseConfig } from "../firebaseConfig";
 import { router } from "expo-router";
@@ -25,7 +13,6 @@ export default function Login({ navigation }: any) {
   const [email, setEmail] = React.useState("");
   const [password, setPassword] = React.useState("");
   const app = initializeApp(firebaseConfig);
-
   const auth = getAuth(app);
 
   const handleCreateAccount = () => {
@@ -34,6 +21,7 @@ export default function Login({ navigation }: any) {
         console.log("Usuario creado");
         const user = userCredential.user;
         console.log(user);
+        Alert.alert("Usuario ", "Usuario creado exitosamente");
       })
       .catch((error) => {
         console.log(error);
@@ -43,17 +31,22 @@ export default function Login({ navigation }: any) {
   const handleLogin = () => {
     signInWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
-        console.log("Usuario logueado");
+        Alert.alert("Inicio exitoso", "Bienvenido a la app");
         const user = userCredential.user;
         console.log(user);
-        router.push({
-          pathname: "/(tabs)",
-        });
+        router.push({pathname: "/(tabs)",});
       })
       .catch((error) => {
-        console.log(error);
+        if (error.code === 'auth/invalid-email') {
+          Alert.alert("Error", "El correo electrónico no es válido.");
+        } else if (error.code === 'auth/user-not-found') {
+          Alert.alert("Error", "No se encontró un usuario con ese correo electrónico.");
+        } else if (error.code === 'auth/wrong-password') {
+          Alert.alert("Error", "La contraseña es incorrecta.");
+        } else {
+          Alert.alert("Error", "Ocurrió un error al iniciar sesión.");
+        }
       });
-    console.log("Usuario logueado");
   };
 
   return (
@@ -86,6 +79,8 @@ export default function Login({ navigation }: any) {
                 onChangeText={(text) => setEmail(text)}
                 style={styles.input}
                 placeholder="Correo"
+                keyboardType="email-address"
+                autoCapitalize="none"
               />
             </View>
             <View>

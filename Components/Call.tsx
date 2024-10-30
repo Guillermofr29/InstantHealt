@@ -1,10 +1,35 @@
 import React from "react";
-import { View, Text } from "react-native";
+import { View, Text, ScrollView, StyleSheet, TextInput } from "react-native";
 
-export default function Call() {
-  return (
-    <View>
-      <Text>Welcome to Home Screen</Text>
-    </View>
-  );
-}
+ function CallComponent() {
+    const searchFilterFunction = (text: string) => {
+      // Implement your search filter logic here
+      console.log(text);
+    };
+  
+    return (
+      <ScrollView style={{backgroundColor:'red'}}>
+      <View style={styles.container}>
+        <Text style={styles.title}>Directorio</Text>
+      </View>
+      <View style={{backgroundColor:'white'}}>
+        <TextInput style={{color:'black', backgroundColor: 'white'}} placeholder='Buscar' onChangeText={text => searchFilterFunction(text)} />
+      </View>
+      </ScrollView>
+    );
+  };
+  
+  const styles = StyleSheet.create({
+    container: {
+      flex: 1,
+      justifyContent: "center",
+      alignItems: "center",
+    },
+    title: {
+      color: 'white',
+      fontSize: 20,
+      fontWeight: 'bold'
+    },
+  });
+
+export default CallComponent;

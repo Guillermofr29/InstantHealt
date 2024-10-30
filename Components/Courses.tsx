@@ -10,19 +10,17 @@ import {
 } from "react-native";
 import Icon from "react-native-vector-icons/Ionicons";
 
+const uri = "../assets/images/manosconpastillas.jpg";
 export function Courses() {
-  const courses = Array(6).fill({
-    title: "Lorem ipsum dolor sit ame",
-    imageUrl: "../assets/images/manosconpastillas.jpg",
+  const courses = Array(12).fill({
+    title: "Lorem ipsum dolor sit ame"
   });
-
   return (
     <View style={styles.container}>
       <View style={styles.header}>
         <Text style={styles.headerText}>Todos los cursos</Text>
         <Icon name="menu" size={24} color="#000" />
       </View>
-
       <View style={styles.searchContainer}>
         <View style={styles.searchBox}>
           <Icon name="search" size={20} color="#888" />
@@ -33,13 +31,12 @@ export function Courses() {
         </TouchableOpacity>
       </View>
 
-
       <FlatList
         data={courses}
         keyExtractor={(item, index) => index.toString()}
         renderItem={({ item }) => (
           <View style={styles.courseCard}>
-            <Image source={{ uri: item.imageUrl }} style={styles.courseImage} />
+            <Image source={require (uri)} style={styles.courseImage} />
             <Text style={styles.courseTitle}>{item.title}</Text>
           </View>
         )}

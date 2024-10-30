@@ -38,6 +38,7 @@ export default function Login({ navigation }: any) {
       })
       .catch((error) => {
         if (error.code === 'auth/invalid-email') {
+          
           Alert.alert("Error", "El correo electrónico no es válido.");
         } else if (error.code === 'auth/user-not-found') {
           Alert.alert("Error", "No se encontró un usuario con ese correo electrónico.");

@@ -6,7 +6,7 @@ import { initializeApp } from "firebase/app";
 import { firebaseConfig } from "../firebaseConfig";
 import { router } from "expo-router";
 
-const uri = "../assets/images/loginfondo.jpeg";
+const uri = require("../assets/images/loginfondo.jpeg");
 const profilepicture = "https://randomuser.me/api/portraits/men/1.jpg";
 
 export default function Login({ navigation }: any) {
@@ -53,9 +53,8 @@ export default function Login({ navigation }: any) {
   return (
     <View style={[styles.container]}>
       <Image
-        source={{ uri: uri }}
-        style={[styles.image, StyleSheet.absoluteFill]}
-      />
+  source={uri}
+  style={[styles.image, StyleSheet.absoluteFill]}/>
       <View style={styles.overlay} />
       <ScrollView
         contentContainerStyle={{
@@ -124,6 +123,7 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: "center",
     alignItems: "center",
+    borderRadius: 20,
   },
   image: {
     width: "100%",
@@ -132,7 +132,7 @@ const styles = StyleSheet.create({
   },
   overlay: {
     ...StyleSheet.absoluteFillObject,
-    backgroundColor: "rgba(0, 0, 0, 0.5)", // Color negro semitransparente
+    backgroundColor: "rgba(0, 0, 0, 0.2)", // Color negro semitransparente
   },
   profilePicture: {
     width: 120,
@@ -148,6 +148,7 @@ const styles = StyleSheet.create({
     borderRadius: 25,
     alignItems: "center",
     backgroundColor: "#BE1622", // Fondo semitransparente
+    opacity:62
   },
   input: {
     width: 250,

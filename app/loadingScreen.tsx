@@ -36,7 +36,7 @@ const LoadingScreen: React.FC = () => {
     >
       <Container className="flex-1 items-center justify-center bg-white">
         <ActivityIndicator size="large" color="#00bcd4" />
-        <LoadingText className="text-lg mt-4 text-gray-700">
+        <LoadingText className="text-lg mt-4 text-white-700">
           InstantHealth
         </LoadingText>
       </Container>

@@ -25,7 +25,7 @@ const LoadingScreen: React.FC<LoadingScreenProps> = ({ navigation }) => {
     <AnimatedSplash
       translucent={true}
       isLoaded={isAppReady}
-      logoImage={require('../assets/images/logo.png')} // Reemplaza con el logo de tu app
+      logoImage={require('../assets/images/logo.png')}
       backgroundColor="#red"
       logoHeight={150}
       logoWidth={150}
@@ -33,7 +33,7 @@ const LoadingScreen: React.FC<LoadingScreenProps> = ({ navigation }) => {
       <Container className="flex-1 items-center justify-center bg-white">
         <ActivityIndicator size="large" color="#00bcd4" />
         <LoadingText className="text-lg mt-4 text-gray-700">
-          Cargando...
+          InstantHealth
         </LoadingText>
       </Container>
     </AnimatedSplash>

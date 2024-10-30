@@ -15,7 +15,7 @@ SplashScreen.preventAutoHideAsync();
 
 export default function RootLayout() {
   useEffect(() => {
-    router.push("/(tabs)");
+    router.push("/loadingScreen");
   });
   return <Slot />;
 }

@@ -31,7 +31,7 @@ export default function Login({ navigation }: any) {
   const handleLogin = () => {
     signInWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
-        Alert.alert("Inicio exitoso", "Bienvenido a la app");
+        Alert.alert("Inicio exitoso", "Bienvenido a InstantHealth");
         const user = userCredential.user;
         console.log(user);
         router.push({pathname: "/(tabs)",});
@@ -66,16 +66,12 @@ export default function Login({ navigation }: any) {
           justifyContent: "center",
         }}
       >
+    <Text style={{color: "white", fontSize:30, marginBottom:15}}>Bienvenido</Text>
         <BlurView intensity={90} style={{ borderRadius: 20 }}>
           <View style={styles.login}>
-          <Text style={{color: "white", fontSize:30}}>Bienvenido</Text>
-            <Image
-              source={{ uri: profilepicture }}
-              style={styles.profilePicture}
-            />
             <View>
-              <Text style={{ fontSize: 17, fontWeight: "400", color: "white" }}>
-                Email
+              <Text style={{ fontSize: 20, fontWeight: "800", color: "white", textAlign:"center" }}>
+                Usuario
               </Text>
               <TextInput
                 onChangeText={(text) => setEmail(text)}
@@ -86,7 +82,7 @@ export default function Login({ navigation }: any) {
               />
             </View>
             <View>
-              <Text style={{ fontSize: 17, fontWeight: "400", color: "white" }}>
+              <Text style={{ fontSize: 20, fontWeight: "800", color: "white", textAlign:"center" }}>
                 Contraseña
               </Text>
               <TextInput
@@ -100,7 +96,7 @@ export default function Login({ navigation }: any) {
               onPress={handleLogin}
               style={[
                 styles.button,
-                { backgroundColor: "#BE1622", marginTop: 20 },
+                { backgroundColor: "#5C6AE9", marginTop: 20 },
               ]}
             >
               <Text style={{ fontSize: 17, fontWeight: "400", color: "white" }}>
@@ -147,11 +143,11 @@ const styles = StyleSheet.create({
     marginVertical: 18,
   },
   login: {
-    width: 350,
+    width: 300,
     padding: 20,
-    borderRadius: 20,
+    borderRadius: 25,
     alignItems: "center",
-    backgroundColor: "red", // Fondo semitransparente
+    backgroundColor: "#BE1622", // Fondo semitransparente
   },
   input: {
     width: 250,
@@ -178,8 +174,8 @@ const styles = StyleSheet.create({
     color: "white",
   },
   labelText: {
-    fontSize: 17,
-    fontWeight: "400",
+    fontSize: 20,
+    fontWeight: "500",
     color: "white",
   },
 });

@@ -1,18 +1,15 @@
-// LoadingScreen.js
 import React, { useState, useEffect } from 'react';
 import AnimatedSplash from 'react-native-animated-splash-screen';
 import { View, Text, ActivityIndicator } from 'react-native';
 import { styled } from 'nativewind';
+import { useRouter } from 'expo-router'; // Importar router para navegación
 
 const Container = styled(View);
 const LoadingText = styled(Text);
 
-interface LoadingScreenProps {
-  navigation: any; // Replace 'any' with the appropriate type if known
-}
-
-const LoadingScreen: React.FC<LoadingScreenProps> = ({ navigation }) => {
+const LoadingScreen: React.FC = () => {
   const [isAppReady, setIsAppReady] = useState(false);
+  const router = useRouter(); // Inicializar router para navegación
 
   useEffect(() => {
     // Simula un tiempo de carga
@@ -21,12 +18,19 @@ const LoadingScreen: React.FC<LoadingScreenProps> = ({ navigation }) => {
     }, 1500); // 1.5 segundos
   }, []);
 
+  // Navegar a la pantalla de login cuando la app esté lista
+  useEffect(() => {
+    if (isAppReady) {
+      router.replace("/login"); // Redirige a la pantalla de login
+    }
+  }, [isAppReady, router]);
+
   return (
     <AnimatedSplash
       translucent={true}
       isLoaded={isAppReady}
       logoImage={require('../assets/images/logo.png')}
-      backgroundColor="#red"
+      backgroundColor="red"
       logoHeight={150}
       logoWidth={150}
     >

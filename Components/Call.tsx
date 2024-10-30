@@ -9,7 +9,6 @@ function CallComponent() {
   });
 
   const searchFilterFunction = (text: any) => {
-    // Aquí puedes implementar la lógica de filtrado de búsqueda
     console.log(text);
   };
 

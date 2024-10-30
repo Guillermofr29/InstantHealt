@@ -33,7 +33,7 @@ export function Courses() {
         </TouchableOpacity>
       </View>
 
-      {/* Course list */}
+
       <FlatList
         data={courses}
         keyExtractor={(item, index) => index.toString()}

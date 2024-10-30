@@ -8,6 +8,10 @@ import { DrawerActions } from "@react-navigation/native";
 import DrawerLayout from "@/app/(drawer)/_DrawerLayout";
 
 const uri = "../assets/images/manosconpastillas.jpg";
+const firstaid = "../assets/images/firstaid.jpg";
+const heridas = "../assets/images/heridas.jpg";
+const rcp = "../assets/images/rcp.jpg";
+const quemaduras = "../assets/images/quemaduras.jpg";
 
 
 function HomeComponent() {
@@ -26,8 +30,8 @@ function HomeComponent() {
         }}
       >
 
-        <Text style={{}} >Bienvenido,</Text>
-        <Text style={{}}>¿Que vamos a aprender hoy?</Text>
+        <Text style={styles.title1} >Bienvenido,</Text>
+        <Text style={styles.title1}>¿Que vamos a aprender hoy?</Text>
       </View>
       <View
         style={{
@@ -41,7 +45,7 @@ function HomeComponent() {
           <Text style={styles.title}>
             <Text style={{fontWeight: 700}} >Aprende lecciones de RCP en minutos</Text>
           </Text>
-          <Image source={require(uri)} style={styles.img} />
+          <Image source={require(rcp)} style={styles.img} />
           <View style={styles.description}>
             <Text style={styles.text}>
               Las lecciones de RCP de la Cruz Roja te enseñarán a actuar en momentos de estres en
@@ -57,13 +61,12 @@ function HomeComponent() {
         </View>
         <View style={styles.card}>
           <Text style={styles.title}>
-          <Text style={{fontWeight: 700}} >Aprende lecciones de RCP en minutos</Text>
+          <Text style={{fontWeight: 700}} >Aprende lecciones de quemaduras en minutos</Text>
           </Text>
-          <Image source={require(uri)} style={styles.img} />
+          <Image source={require(quemaduras)} style={styles.img} />
           <View style={styles.description}>
             <Text style={styles.text}>
-              Las lecciones de RCP de la Cruz Roja te enseñarán a actuar en momentos de estres en
-              caso de emergencia.
+              Como actuar en caso de quemaduras, la mejor forma de tratarlas y prevenirlas.
             </Text>
             <Button 
 
@@ -75,13 +78,12 @@ function HomeComponent() {
         </View>
         <View style={styles.card}>
           <Text style={styles.title}>
-          <Text style={{fontWeight: 700}} >Aprende lecciones de RCP en minutos</Text>
+          <Text style={{fontWeight: 700}} >Atiende heridas en minutos</Text>
           </Text>
-          <Image source={require(uri)} style={styles.img} />
+          <Image source={require(heridas)} style={styles.img} />
           <View style={styles.description}>
             <Text style={styles.text}>
-              Las lecciones de RCP de la Cruz Roja te enseñarán a actuar en momentos de estres en
-              caso de emergencia.
+              Las heridas son comunes en el hogar, aprende a tratarlas de manera segura y eficaz.
             </Text>
             <Button 
 
@@ -93,13 +95,12 @@ function HomeComponent() {
         </View>
         <View style={styles.card}>
           <Text style={styles.title}>
-          <Text style={{fontWeight: 700}} >Aprende lecciones de RCP en minutos</Text>
+          <Text style={{fontWeight: 700}} >¿Necesitas un botiquin?</Text>
           </Text>
-          <Image source={require(uri)} style={styles.img} />
+          <Image source={require(firstaid)} style={styles.img} />
           <View style={styles.description}>
             <Text style={styles.text}>
-              Las lecciones de RCP de la Cruz Roja te enseñarán a actuar en momentos de estres en
-              caso de emergencia.
+              Aprende a armar un botiquin de primeros auxilios, y tenlo siempre a la mano.
             </Text>
             <Button 
 
@@ -152,4 +153,8 @@ const styles = StyleSheet.create({
   card: {
     padding: 10,
   },
+  title1:{
+    fontSize: 20,
+    fontWeight: "bold",
+  }
 });

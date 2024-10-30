@@ -10,11 +10,28 @@ import {
 } from "react-native";
 import Icon from "react-native-vector-icons/Ionicons";
 
-const uri = "../assets/images/manosconpastillas.jpg";
+const uri = require("../assets/images/manosconpastillas.jpg");
+const firstaid = require("../assets/images/firstaid.jpg");
+const heridas = require("../assets/images/heridas.jpg");
+const rcp = require("../assets/images/rcp.jpg");
+const quemaduras = require("../assets/images/quemaduras.jpg");
 export function Courses() {
-  const courses = Array(12).fill({
-    title: "Primeros Auxilios"
-  });
+  const courses = [{
+    title: "Primeros Auxilios",
+    img: firstaid
+  },{
+    title: "Heridas",
+    img: heridas
+  },{
+    title: "RCP",
+    img: rcp
+  },{
+    title: "Quemaduras",
+    img: quemaduras
+  },{
+    title: "Auxiliar de Farmacia",
+    img: uri
+  }];
   return (
     <View style={styles.container}>
       <View style={styles.header}>
@@ -36,7 +53,7 @@ export function Courses() {
         keyExtractor={(item, index) => index.toString()}
         renderItem={({ item }) => (
           <View style={styles.courseCard}>
-            <Image source={require (uri)} style={styles.courseImage} />
+            <Image source={item.img} style={styles.courseImage} />
             <Text style={styles.courseTitle}>{item.title}</Text>
           </View>
         )}

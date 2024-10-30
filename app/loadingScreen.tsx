@@ -30,7 +30,7 @@ const LoadingScreen: React.FC = () => {
       translucent={true}
       isLoaded={isAppReady}
       logoImage={require('../assets/images/logo.png')}
-      backgroundColor="red"
+      backgroundColor="#BE1622"
       logoHeight={150}
       logoWidth={150}
     >

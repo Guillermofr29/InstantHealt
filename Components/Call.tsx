@@ -1,12 +1,22 @@
 import React from "react";
 import { View, Text, ScrollView, StyleSheet, TextInput, TouchableOpacity } from "react-native";
-import Icon from 'react-native-vector-icons/Ionicons';
+import Icon from "react-native-vector-icons/FontAwesome";
 
 function CallComponent() {
-  const contacts = Array(5).fill({
+  const contacts = [{
     phoneNumber: '5567992030',
     name: 'Bomberos Cancun',
-  });
+  },{
+    phoneNumber: '5567982070',
+    name: 'Cruz Roja Cancun',
+  },{
+    phoneNumber: '9985674567',
+    name: 'Policia Cancun',
+  },{
+    phoneNumber: '9028765432',
+    name: 'Bomberos Cancun',
+  }
+];
 
   const searchFilterFunction = (text: any) => {
     console.log(text);
@@ -38,8 +48,12 @@ function CallComponent() {
 
       {contacts.map((contact, index) => (
         <View key={index} style={styles.contactCard}>
+          <View>
           <Text style={styles.contactPhone}>{contact.phoneNumber}</Text>
           <Text style={styles.contactName}>{contact.name}</Text>
+          </View>
+          
+          <Icon name="phone" size={20} color="#BE1622" style={{alignSelf:'center'}}  />
         </View>
       ))}
     </ScrollView>
@@ -92,6 +106,8 @@ const styles = StyleSheet.create({
     borderRadius: 8,
   },
   contactCard: {
+    justifyContent: 'space-between',
+    flexDirection: 'row',
     backgroundColor: '#D3D3D3',
     padding: 15,
     marginHorizontal: 20,

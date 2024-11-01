@@ -1,7 +1,20 @@
 import React from "react";
-import {Image,ScrollView,TouchableOpacity,TextInput,Text,View,StyleSheet,Alert,} from "react-native";
+import {
+  Image,
+  ScrollView,
+  TouchableOpacity,
+  TextInput,
+  Text,
+  View,
+  StyleSheet,
+  Alert,
+} from "react-native";
 import { BlurView } from "expo-blur";
-import {getAuth,createUserWithEmailAndPassword,signInWithEmailAndPassword,} from "firebase/auth";
+import {
+  getAuth,
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
+} from "firebase/auth";
 import { initializeApp } from "firebase/app";
 import { firebaseConfig } from "../firebaseConfig";
 import { router } from "expo-router";
@@ -34,15 +47,17 @@ export default function Login({ navigation }: any) {
         Alert.alert("Inicio exitoso", "Bienvenido a InstantHealth");
         const user = userCredential.user;
         console.log(user);
-        router.push({pathname: "/(tabs)",});
+        router.push({ pathname: "/(tabs)" });
       })
       .catch((error) => {
-        if (error.code === 'auth/invalid-email') {
-          
+        if (error.code === "auth/invalid-email") {
           Alert.alert("Error", "El correo electrónico no es válido.");
-        } else if (error.code === 'auth/user-not-found') {
-          Alert.alert("Error", "No se encontró un usuario con ese correo electrónico.");
-        } else if (error.code === 'auth/wrong-password') {
+        } else if (error.code === "auth/user-not-found") {
+          Alert.alert(
+            "Error",
+            "No se encontró un usuario con ese correo electrónico."
+          );
+        } else if (error.code === "auth/wrong-password") {
           Alert.alert("Error", "La contraseña es incorrecta.");
         } else {
           Alert.alert("Error", "Ocurrió un error al iniciar sesión.");
@@ -52,9 +67,7 @@ export default function Login({ navigation }: any) {
 
   return (
     <View style={[styles.container]}>
-      <Image
-  source={uri}
-  style={[styles.image, StyleSheet.absoluteFill]}/>
+      <Image source={uri} style={[styles.image, StyleSheet.absoluteFill]} />
       <View style={styles.overlay} />
       <ScrollView
         contentContainerStyle={{
@@ -65,11 +78,20 @@ export default function Login({ navigation }: any) {
           justifyContent: "center",
         }}
       >
-    <Text style={{color: "white", fontSize:30, marginBottom:15}}>Bienvenido</Text>
+        <Text style={{ color: "white", fontSize: 30, marginBottom: 15 }}>
+          Bienvenido
+        </Text>
         <BlurView intensity={90} style={{ borderRadius: 20 }}>
           <View style={styles.login}>
             <View>
-              <Text style={{ fontSize: 20, fontWeight: "800", color: "white", textAlign:"center" }}>
+              <Text
+                style={{
+                  fontSize: 20,
+                  fontWeight: "800",
+                  color: "white",
+                  textAlign: "center",
+                }}
+              >
                 Usuario
               </Text>
               <TextInput
@@ -81,7 +103,14 @@ export default function Login({ navigation }: any) {
               />
             </View>
             <View>
-              <Text style={{ fontSize: 20, fontWeight: "800", color: "white", textAlign:"center" }}>
+              <Text
+                style={{
+                  fontSize: 20,
+                  fontWeight: "800",
+                  color: "white",
+                  textAlign: "center",
+                }}
+              >
                 Contraseña
               </Text>
               <TextInput
@@ -105,12 +134,11 @@ export default function Login({ navigation }: any) {
           </View>
         </BlurView>
         <TouchableOpacity
-          onPress={handleCreateAccount}
-          style={[styles.button, { backgroundColor: "#5C6AE9"}]}
+          onPress={() => router.push({ pathname: "/register" })}
+          style={[styles.button, { backgroundColor: "#5C6AE9" }]}
         >
           <Text style={{ fontSize: 17, fontWeight: "400", color: "white" }}>
-            {" "}
-            Crear cuenta
+            No tengo cuenta
           </Text>
         </TouchableOpacity>
       </ScrollView>
@@ -148,7 +176,7 @@ const styles = StyleSheet.create({
     borderRadius: 25,
     alignItems: "center",
     backgroundColor: "#BE1622", // Fondo semitransparente
-    opacity:62
+    opacity: 62,
   },
   input: {
     width: 250,

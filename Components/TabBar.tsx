@@ -42,7 +42,7 @@ export function TabBar({ state, descriptors, navigation }: BottomTabBarProps) {
     index: "Inicio",
     course: "Cursos",
     call: "Llamar",
-    help: "Ayuda",
+    chatbotScreen: "Chatbot",
   };
 
   return (

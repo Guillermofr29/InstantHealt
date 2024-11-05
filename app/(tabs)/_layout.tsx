@@ -11,7 +11,7 @@ const TabsLayout = () => {
       <Tabs.Screen name="index" options={{ title: "Home"}} />
       <Tabs.Screen name="course" options={{ title: "Course"}} />
       <Tabs.Screen name="call" options={{ title: "Call"}} />
-      <Tabs.Screen name="help" options={{ title: "Help"}} />
+      <Tabs.Screen name="chatbotScreen" options={{ title: "Chatbot"}} />
     </Tabs>
 
   );

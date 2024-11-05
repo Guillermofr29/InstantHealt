@@ -134,7 +134,7 @@ export default function Login({ navigation }: any) {
           </View>
         </BlurView>
         <TouchableOpacity
-          onPress={() => router.push({ pathname: "/register" })}
+          onPress={() => router.push({ pathname: "./register" })}
           style={[styles.button, { backgroundColor: "#5C6AE9" }]}
         >
           <Text style={{ fontSize: 17, fontWeight: "400", color: "white" }}>

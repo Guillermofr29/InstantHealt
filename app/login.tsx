@@ -138,7 +138,7 @@ export default function Login({ navigation }: any) {
           style={[styles.button, { backgroundColor: "#5C6AE9" }]}
         >
           <Text style={{ fontSize: 17, fontWeight: "400", color: "white" }}>
-            No tengo cuenta
+            No tengo cuenta.
           </Text>
         </TouchableOpacity>
       </ScrollView>

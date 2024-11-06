@@ -41,7 +41,8 @@ const ChatbotScreen = () => {
         style={styles.input}
         value={input}
         onChangeText={setInput}
-        placeholder="Escribe tu pregunta..."
+        placeholder="eweeee ya se arreglo weee
+        "
       />
       <Button title="Enviar" onPress={handleSend} />
     </View>

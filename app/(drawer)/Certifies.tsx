@@ -7,7 +7,7 @@ import React from "react";
 const Certifies = () => {
   return (
     <View style={styles.container}>
-        d
+        Hey its Certifies
           </View>
   );
 }

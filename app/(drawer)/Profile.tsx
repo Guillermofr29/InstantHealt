@@ -7,7 +7,7 @@ import React from "react";
 const Profile = () => {
   return (
     <View style={styles.container}>
-        d
+        hey its profile
           </View>
   );
 }

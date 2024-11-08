@@ -2,36 +2,49 @@ import { Button } from "react-native-elements";
 import Icon from "react-native-vector-icons/FontAwesome";
 
 import React from "react";
-import { View, Text, ScrollView, StyleSheet, Image } from "react-native";
-import { useNavigation } from "expo-router";
-import { DrawerActions } from "@react-navigation/native";
-import DrawerLayout from "@/app/(drawer)/_DrawerLayout";
+import { View, Text, ScrollView, StyleSheet, Image, TouchableOpacity } from "react-native";
 
-const uri = "../assets/images/manosconpastillas.jpg";
 const firstaid = "../assets/images/firstaid.jpg";
 const heridas = "../assets/images/heridas.jpg";
 const rcp = "../assets/images/rcp.jpg";
 const quemaduras = "../assets/images/quemaduras.jpg";
 
 
-function HomeComponent() {
+const HomeComponent: React.FC<{ navigation: any }> = ({ navigation }) => {
 
   return (
     <ScrollView style={{ backgroundColor: "#D9D9D9" }}>
       <View
         style={{
-          width: "100%",
           flex: 1,
           top: 0,
+          margin:0,
           padding: 20,
           paddingBottom: 25,
           paddingTop: 50,
           marginHorizontal: 0,
+          flexDirection: "row",
+          justifyContent: "space-between",
         }}
       >
+                <Text style={styles.title1} >Bienvenido,  ¿Que vamos a aprender hoy?</Text>
 
-        <Text style={styles.title1} >Bienvenido,</Text>
-        <Text style={styles.title1}>¿Que vamos a aprender hoy?</Text>
+        <TouchableOpacity 
+        onPress={() => navigation.toggleDrawer()}
+        style={{
+          marginHorizontal:10,
+          height: 45,
+          width: 45,
+          borderRadius: 999,
+          alignItems: "center",
+        justifyContent: "center",
+        backgroundColor: "#BE1622",
+        }}
+        >
+          <Icon name="bars" size={30} color="white" />
+        </TouchableOpacity>
+
+
       </View>
       <View
         style={{

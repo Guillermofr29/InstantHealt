@@ -9,13 +9,11 @@ import LoadingScreen from "./loadingScreen";
 import { router, Slot, Stack } from "expo-router";
 import 'react-native-reanimated'
 import 'react-native-gesture-handler'
+import AppNavigator from "./navigations/AppNavigator";
 
 SplashScreen.preventAutoHideAsync();
 
 
 export default function RootLayout() {
-  useEffect(() => {
-    router.push("/loadingScreen");
-  });
-  return <Slot />;
+ return <AppNavigator />
 }

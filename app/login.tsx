@@ -22,7 +22,7 @@ import { router } from "expo-router";
 const uri = require("../assets/images/loginfondo.jpeg");
 const profilepicture = "https://randomuser.me/api/portraits/men/1.jpg";
 
-export default function Login({ navigation }: any) {
+const Login: React.FC<{ navigation: any }> = ({ navigation }) => {
   const [email, setEmail] = React.useState("");
   const [password, setPassword] = React.useState("");
   const app = initializeApp(firebaseConfig);
@@ -46,8 +46,8 @@ export default function Login({ navigation }: any) {
       .then((userCredential) => {
         Alert.alert("Inicio exitoso", "Bienvenido a InstantHealth");
         const user = userCredential.user;
-        console.log(user);
-        router.push({ pathname: "/(tabs)" });
+        console.log(user);;
+        navigation.navigate("Main");
       })
       .catch((error) => {
         if (error.code === "auth/invalid-email") {
@@ -124,7 +124,7 @@ export default function Login({ navigation }: any) {
               onPress={handleLogin}
               style={[
                 styles.button,
-                { backgroundColor: "#5C6AE9", marginTop: 20 },
+                { backgroundColor: "#5cb85c", marginTop: 20 },
               ]}
             >
               <Text style={{ fontSize: 17, fontWeight: "400", color: "white" }}>
@@ -151,7 +151,7 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: "center",
     alignItems: "center",
-    borderRadius: 20,
+    borderRadius: 5,
   },
   image: {
     width: "100%",
@@ -160,23 +160,24 @@ const styles = StyleSheet.create({
   },
   overlay: {
     ...StyleSheet.absoluteFillObject,
-    backgroundColor: "rgba(0, 0, 0, 0.2)", // Color negro semitransparente
+    backgroundColor: "rgba(0, 0, 0, 0.2)", 
   },
   profilePicture: {
     width: 120,
     height: 120,
     borderRadius: 60,
-    borderWidth: 2,
+    borderWidth: 7,
     borderColor: "#fff",
     marginVertical: 18,
   },
   login: {
     width: 300,
     padding: 20,
-    borderRadius: 25,
+    borderRadius: 5,
+    
     alignItems: "center",
-    backgroundColor: "#BE1622", // Fondo semitransparente
-    opacity: 62,
+    backgroundColor: "#BE1622", 
+
   },
   input: {
     width: 250,
@@ -186,8 +187,8 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     padding: 15,
     marginVertical: 10,
-    backgroundColor: "rgba(255, 255, 255, 0.2)", // Fondo semitransparente
-    color: "#fff", // Texto blanco
+    backgroundColor: "rgba(255, 255, 255, 0.2)", 
+    color: "#fff",
   },
   button: {
     width: 220,
@@ -208,3 +209,6 @@ const styles = StyleSheet.create({
     color: "white",
   },
 });
+
+
+export default Login;

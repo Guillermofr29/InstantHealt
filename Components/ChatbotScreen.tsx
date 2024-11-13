@@ -4,10 +4,9 @@ import { View, TextInput, Button, Text, StyleSheet, ScrollView, FlatList, Keyboa
 import { GoogleGenerativeAI } from '@google/generative-ai';
 import { Icon } from 'react-native-elements';
 
-// Accede a tu clave de API como una variable de entorno
-const apiKey = process.env.API_KEY || 'AIzaSyC1vQgXDTZERZX1gaJGMhC8_irbAqjKauQ'; // Reemplaza 'TU_CLAVE_API' con tu clave real si no usas variables de entorno
+const apiKey = process.env.API_KEY || 'AIzaSyC1vQgXDTZERZX1gaJGMhC8_irbAqjKauQ'; 
 const genAI = new GoogleGenerativeAI(apiKey);
-const model = genAI.getGenerativeModel({ model: 'gemini-1.5-flash' }); // Puedes cambiar el modelo si es necesario
+const model = genAI.getGenerativeModel({ model: 'gemini-1.5-flash' }); 
 
 const ChatbotScreen = () => {
   const [input, setInput] = useState('');

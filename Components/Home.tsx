@@ -16,12 +16,13 @@ const HomeComponent: React.FC<{ navigation: any }> = ({ navigation }) => {
     <ScrollView style={{ backgroundColor: "#D9D9D9" }}>
       <View
         style={{
+          
           flex: 1,
           top: 0,
           margin:0,
           padding: 20,
           paddingBottom: 25,
-          paddingTop: 50,
+          paddingTop: 80,
           marginHorizontal: 0,
           flexDirection: "row",
           justifyContent: "space-between",
@@ -36,6 +37,7 @@ const HomeComponent: React.FC<{ navigation: any }> = ({ navigation }) => {
           height: 45,
           width: 45,
           borderRadius: 999,
+
           alignItems: "center",
         justifyContent: "center",
         backgroundColor: "#BE1622",
@@ -52,6 +54,7 @@ const HomeComponent: React.FC<{ navigation: any }> = ({ navigation }) => {
           padding: 30,
           borderTopStartRadius: 13,
           borderTopEndRadius: 13,
+          alignSelf: "center",
         }}
       >
         <View style={styles.card}>
@@ -138,7 +141,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
   img: {
-    width: "100%",
+    width: "103%",
     height: 200,
     borderRadius: 5,
     marginTop: 13,
@@ -153,14 +156,15 @@ const styles = StyleSheet.create({
     fontSize: 12,
     textAlign: "justify",
     marginLeft: 10,
-    marginRight: 15
+    marginRight: 10,
+    paddingRight: 10,
   },
   description: {
     marginTop: 10,
     flexDirection: "row",
+    justifyContent: "space-evenly"
   },
   button: {
-    marginRight:5,
     backgroundColor: "#BE1622",
   },
   card: {

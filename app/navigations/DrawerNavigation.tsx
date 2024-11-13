@@ -2,7 +2,6 @@ import React from 'react';
 import { View, Text, StyleSheet, Image } from 'react-native';
 import { createDrawerNavigator, DrawerContentScrollView, DrawerItemList, DrawerItem } from '@react-navigation/drawer';
 import Icon from 'react-native-vector-icons/FontAwesome';
-import { HomeComponent } from '@/Components';
 import Profile from '@/Components/UserPanel/Profile';
 import Certifies from '@/Components/UserPanel/Certifies';
 
@@ -11,6 +10,9 @@ const Drawer = createDrawerNavigator();
 
 import { DrawerContentComponentProps } from '@react-navigation/drawer';
 import BottomTabNavigator from './BottomTabNavigator';
+import { router } from 'expo-router';
+import Login from '../login';
+
 
 const CustomDrawerContent = (props: DrawerContentComponentProps) => {
   return (
@@ -24,11 +26,6 @@ const CustomDrawerContent = (props: DrawerContentComponentProps) => {
         <Text style={styles.email}>john.doe@example.com</Text>
       </View>
       <DrawerItemList {...props} />
-      <DrawerItem
-        label="Cerrar Sesión"
-        onPress={() => alert('Cerrar Sesión')}
-        icon={() => <Icon name="sign-out" size={24} color="black" />}
-      />
     </DrawerContentScrollView>
   );
 };
@@ -79,6 +76,16 @@ const DrawerNavigation = () => {
             <Icon name="cog" size={24} color="black" />
           ),
         }}
+      />
+      <Drawer.Screen
+        name="Login"
+        component={Login}
+        options={{
+          drawerLabel: "Cerrar Sesion",
+          drawerIcon: () => (
+            <Icon name="sign-out" size={24} color="black" />
+          ),
+        }} 
       />
     </Drawer.Navigator>
   );

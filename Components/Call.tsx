@@ -71,8 +71,8 @@ const styles = StyleSheet.create({
     paddingHorizontal: 20,
     width: "100%",
     padding: 10,
-    paddingBottom: 25,
-    paddingTop: 50,
+    paddingBottom: 10,
+    paddingTop: 80,
   },
   title: {
     color: 'white',

@@ -23,6 +23,7 @@ export default function Register() {
         console.log(user);
         Alert.alert("Usuario", "Usuario creado exitosamente");
         router.push({ pathname: "/(tabs)" });
+        
       })
       .catch((error) => {
         console.log(error);

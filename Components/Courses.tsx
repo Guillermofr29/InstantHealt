@@ -36,7 +36,6 @@ export function Courses() {
     <View style={styles.container}>
       <View style={styles.header}>
         <Text style={styles.headerText}>Todos los cursos</Text>
-        <Icon name="menu" size={24} color="#000" />
       </View>
       <View style={styles.searchContainer}>
         <View style={styles.searchBox}>
@@ -72,7 +71,7 @@ const styles = StyleSheet.create({
     top: 0,
     padding: 10,
     paddingBottom: 25,
-    paddingTop: 50,
+    paddingTop: 80,
     marginHorizontal: 0,
   },
   header: {
@@ -82,7 +81,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 20,
     marginBottom: 10,
   },
-  headerText: { fontSize: 24, fontWeight: "bold" },
+  headerText: { fontSize: 24, fontWeight: "bold", paddingBottom: 10 },
   searchContainer: {
     flexDirection: "row",
     alignItems: "center",

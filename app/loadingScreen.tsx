@@ -7,7 +7,7 @@ import { useRouter } from 'expo-router'; // Importar router para navegación
 const Container = styled(View);
 const LoadingText = styled(Text);
 
-const LoadingScreen: React.FC = () => {
+const LoadingScreen = () => {
   const [isAppReady, setIsAppReady] = useState(false);
   const router = useRouter(); // Inicializar router para navegación
 
@@ -21,7 +21,7 @@ const LoadingScreen: React.FC = () => {
   // Navegar a la pantalla de login cuando la app esté lista
   useEffect(() => {
     if (isAppReady) {
-      router.replace("/login"); // Redirige a la pantalla de login
+      router.push("/login"); // Redirige a la pantalla de login
     }
   }, [isAppReady, router]);
 

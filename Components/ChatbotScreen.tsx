@@ -18,7 +18,8 @@ const ChatbotScreen = () => {
     setMessages([...messages, { id: `${Date.now()}-user`, text: `Tú: ${input}`, sender: 'user' }]);
 
     try {
-      const result = await model.generateContent(input); // Usando generateContent
+      const context="Eres un experto en primeros auxilios en México y hablas español. Proporciona respuestas detalladas y precisas sobre primeros auxilios.";
+      const result = await model.generateContent(`${context} Pregunta: ${input}`); // Usando generateContent
       const response = await result.response;
       const botMessage = response.text(); // Extrayendo el texto de la respuesta
       setMessages([...messages, { id: `${Date.now()}-user`, text: `Tú: ${input}`, sender: 'user' }, { id: `${Date.now()}-bot`, text: `Bot: ${botMessage}`, sender: 'bot' }]);

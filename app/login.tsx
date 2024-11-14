@@ -134,7 +134,7 @@ const Login: React.FC<{ navigation: any }> = ({ navigation }) => {
           </View>
         </BlurView>
         <TouchableOpacity
-          onPress={() => router.push({ pathname: "./register" })}
+          onPress={() => navigation.navigate("Register")}
           style={[styles.button, { backgroundColor: "#5C6AE9" }]}
         >
           <Text style={{ fontSize: 17, fontWeight: "400", color: "white" }}>

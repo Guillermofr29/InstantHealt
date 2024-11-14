@@ -1,19 +1,30 @@
-import { useFonts } from "expo-font";
-import * as SplashScreen from "expo-splash-screen";
-import { useEffect, useState } from "react";
-import "react-native-reanimated";
-import { Text, View } from "react-native";
-import Login from "@/app/login";
-import Home from "./(tabs)";
-import LoadingScreen from "./loadingScreen";
-import { router, Slot, Stack } from "expo-router";
-import 'react-native-reanimated'
-import 'react-native-gesture-handler'
-import AppNavigator from "./navigations/AppNavigator";
+import React from 'react';
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import DrawerNavigation from './navigations/DrawerNavigation';
+import CourseHome from '@/Components/CourseHome';
+import Login from './login';
+import Register from './register';
+import { CallComponent } from '@/Components';
 
-SplashScreen.preventAutoHideAsync();
+
+const Stack = createNativeStackNavigator();
 
 
 export default function RootLayout() {
- return <AppNavigator />
+  return (
+    <NavigationContainer independent={true}>
+    <Stack.Navigator
+    screenOptions={{headerShown: false}}
+    initialRouteName='Component'
+    >
+      <Stack.Screen name='Login' component={Login} />
+      <Stack.Screen name='Main' component={DrawerNavigation} />
+      <Stack.Screen name='Component' component={CallComponent} />
+      <Stack.Screen name='Register' component={Register} />
+
+    </Stack.Navigator>
+  </NavigationContainer>
+  );
 }
+

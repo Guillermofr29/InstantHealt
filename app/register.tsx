@@ -9,7 +9,7 @@ import { router } from "expo-router";
 
 const uri = require("../assets/images/loginfondo.jpeg");
 
-export default function Register() {
+const Register: React.FC<{ navigation: any }> = ({ navigation }) => {
   const [email, setEmail] = React.useState("");
   const [password, setPassword] = React.useState("");
   const app = initializeApp(firebaseConfig);
@@ -22,7 +22,7 @@ export default function Register() {
         const user = userCredential.user;
         console.log(user);
         Alert.alert("Usuario", "Usuario creado exitosamente");
-        router.push({ pathname: "/(tabs)" });
+        router.push({ pathname: "/(tabs)", params: {} });
         
       })
       .catch((error) => {
@@ -79,7 +79,7 @@ export default function Register() {
           </View>
         </BlurView>
         <TouchableOpacity
-          onPress={() => router.push({ pathname: "/login" })}
+          onPress={() => navigation.navigate("Login")}
           style={[styles.button, { backgroundColor: "#5C6AE9" }]}
         >
           <Text style={{ fontSize: 17, fontWeight: "400", color: "white" }}>Ya tengo una cuenta</Text>
@@ -153,3 +153,4 @@ const styles = StyleSheet.create({
     },
   });
   
+  export default Register;

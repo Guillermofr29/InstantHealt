@@ -70,7 +70,7 @@ const styles = StyleSheet.create({
     backgroundColor: "#f5f5f5",
   },
   messagesContainer: {
-    padding: 20,
+    padding: 15,
   },
   message: {
     padding: 15,

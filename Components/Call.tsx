@@ -64,15 +64,13 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#BE1622',
-  
- 
   },
   header: {
     paddingHorizontal: 20,
     width: "100%",
     padding: 10,
     paddingBottom: 10,
-    paddingTop: 80,
+    paddingTop: 45,
   },
   title: {
     color: 'white',

@@ -16,7 +16,7 @@ export default function RootLayout() {
     <NavigationContainer independent={true}>
     <Stack.Navigator
     screenOptions={{headerShown: false}}
-    initialRouteName='Component'
+    initialRouteName='Login'
     >
       <Stack.Screen name='Login' component={Login} />
       <Stack.Screen name='Main' component={DrawerNavigation} />

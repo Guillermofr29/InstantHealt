@@ -22,7 +22,7 @@ const Register: React.FC<{ navigation: any }> = ({ navigation }) => {
         const user = userCredential.user;
         console.log(user);
         Alert.alert("Usuario", "Usuario creado exitosamente");
-        router.push({ pathname: "/(tabs)", params: {} });
+        navigation.navigate("Main");
         
       })
       .catch((error) => {

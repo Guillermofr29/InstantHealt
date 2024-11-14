@@ -7,14 +7,15 @@ import Login from './login';
 import Register from './register';
 import { CallComponent } from '@/Components';
 import LoadingScreen from './loadingScreen';
+import { SplashScreen } from 'expo-router';
 
+SplashScreen.preventAutoHideAsync
 
 const Stack = createNativeStackNavigator();
 
 
 export default function RootLayout() {
   return (
-    <NavigationContainer independent={true}>
     <Stack.Navigator
     screenOptions={{headerShown: false}}
     initialRouteName='Loading'
@@ -26,7 +27,6 @@ export default function RootLayout() {
       <Stack.Screen name='Register' component={Register} />
 
     </Stack.Navigator>
-  </NavigationContainer>
   );
 }
 

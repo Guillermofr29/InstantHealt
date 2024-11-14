@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import AnimatedSplash from 'react-native-animated-splash-screen';
 import { View, Text, ActivityIndicator } from 'react-native';
 import { styled } from 'nativewind';
 import { useRouter } from 'expo-router'; // Importar router para navegación
@@ -18,7 +17,7 @@ const LoadingScreen :React.FC<{ navigation: any }> = ({ navigation }) => {
     }, 1500); // 1.5 segundos
   }, []);
 
-  // Navegar a la pantalla de login cuando la app esté lista
+  // Navegar a la pantalla de login cuando la app esté lista 
   useEffect(() => {
     if (isAppReady) {
       navigation.navigate("Login") // Redirige a la pantalla de login
@@ -26,21 +25,12 @@ const LoadingScreen :React.FC<{ navigation: any }> = ({ navigation }) => {
   }, [isAppReady, router]);
 
   return (
-    <AnimatedSplash
-      translucent={true}
-      isLoaded={isAppReady}
-      logoImage={require('../assets/images/logo.png')}
-      backgroundColor="#BE1622"
-      logoHeight={150}
-      logoWidth={150}
-    >
-      <Container className="flex-1 items-center justify-center bg-white">
-        <ActivityIndicator size="large" color="#00bcd4" />
-        <LoadingText className="text-lg mt-4 text-white-700">
-          InstantHealth
-        </LoadingText>
-      </Container>
-    </AnimatedSplash>
+    <Container className="flex-1 items-center justify-center bg-white">
+      <ActivityIndicator size="large" color="#00bcd4" />
+      <LoadingText className="text-lg mt-4 text-black">
+        Cargando...
+      </LoadingText>
+    </Container>
   );
 };
 

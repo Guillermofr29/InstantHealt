@@ -83,7 +83,7 @@ const styles = StyleSheet.create({
     alignSelf: "flex-end",
   },
   botMessage: {
-    backgroundColor: "#e0e0e0",
+    backgroundColor: "#aaaac0",
     alignSelf: "flex-start",
     color: "#000",
   },

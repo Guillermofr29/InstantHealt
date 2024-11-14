@@ -108,7 +108,7 @@ const styles = StyleSheet.create({
   contactCard: {
     justifyContent: 'space-between',
     flexDirection: 'row',
-    backgroundColor: '#D3D3D3',
+    backgroundColor: '#e4e4eb',
     padding: 15,
     marginHorizontal: 20,
     marginBottom: 10,

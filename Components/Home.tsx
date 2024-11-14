@@ -13,16 +13,13 @@ const quemaduras = "../assets/images/quemaduras.jpg";
 const HomeComponent: React.FC<{ navigation: any }> = ({ navigation }) => {
 
   return (
-    <ScrollView style={{ backgroundColor: "#D9D9D9" }}>
+    <ScrollView style={{ backgroundColor: "#e4e4eb" }}>
       <View
         style={{
-          
           flex: 1,
-          top: 0,
-          margin:0,
           padding: 20,
           paddingBottom: 25,
-          paddingTop: 80,
+          paddingTop: 45,
           marginHorizontal: 0,
           flexDirection: "row",
           justifyContent: "space-between",
@@ -33,14 +30,13 @@ const HomeComponent: React.FC<{ navigation: any }> = ({ navigation }) => {
         <TouchableOpacity 
         onPress={() => navigation.toggleDrawer()}
         style={{
-          marginHorizontal:10,
+          marginLeft:10,
           height: 45,
           width: 45,
-          borderRadius: 999,
-
+          borderRadius: 50,
           alignItems: "center",
-        justifyContent: "center",
-        backgroundColor: "#BE1622",
+          justifyContent: "center",
+          backgroundColor: "#BE1622",
         }}
         >
           <Icon name="bars" size={30} color="white" />

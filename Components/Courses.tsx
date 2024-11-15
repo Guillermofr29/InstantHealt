@@ -1,11 +1,10 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   Text,
   View,
   TextInput,
   FlatList,
   Image,
-  TouchableOpacity,
   StyleSheet,
 } from "react-native";
 import Icon from "react-native-vector-icons/Ionicons";
@@ -15,49 +14,69 @@ const firstaid = require("../assets/images/firstaid.jpg");
 const heridas = require("../assets/images/heridas.jpg");
 const rcp = require("../assets/images/rcp.jpg");
 const quemaduras = require("../assets/images/quemaduras.jpg");
+
+const courses = [{
+  title: "Primeros Auxilios",
+  img: firstaid
+},{
+  title: "Heridas",
+  img: heridas
+},{
+  title: "RCP",
+  img: rcp
+},{
+  title: "Quemaduras",
+  img: quemaduras
+},{
+  title: "Auxiliar de Farmacia",
+  img: uri
+}];
+
 export function Courses() {
-  const courses = [{
-    title: "Primeros Auxilios",
-    img: firstaid
-  },{
-    title: "Heridas",
-    img: heridas
-  },{
-    title: "RCP",
-    img: rcp
-  },{
-    title: "Quemaduras",
-    img: quemaduras
-  },{
-    title: "Auxiliar de Farmacia",
-    img: uri
-  }];
+  const [searchText, setSearchText] = useState('');
+  const [filteredCourses, setFilteredCourses] = useState(courses);
+
+  const searchFilterFunction = (text: string) => {
+    setSearchText(text);
+    const newData = courses.filter(item => {
+      const itemData = `${item.title.toUpperCase()}`;
+      const textData = text.toUpperCase();
+      return itemData.indexOf(textData) > -1;
+    });
+    setFilteredCourses(newData);
+  };
+
   return (
     <View style={styles.container}>
       <View style={styles.header}>
         <Text style={styles.headerText}>Todos los cursos</Text>
       </View>
+
       <View style={styles.searchContainer}>
         <View style={styles.searchBox}>
           <Icon name="search" size={20} color="#888" />
-          <TextInput placeholder="Buscar" style={styles.searchInput} />
+          <TextInput
+            style={styles.searchInput}
+            placeholder="Buscar cursos"
+            placeholderTextColor="#888"
+            onChangeText={text => searchFilterFunction(text)}
+            value={searchText}
+          />
         </View>
-        <TouchableOpacity style={styles.filterButton}>
-          <Icon name="filter" size={20} color="#000" />
-        </TouchableOpacity>
       </View>
 
       <FlatList
-        data={courses}
-        keyExtractor={(item, index) => index.toString()}
+        data={filteredCourses}
+        keyExtractor={( index) => index.toString()}
+        numColumns={2}
+        columnWrapperStyle={styles.row}
         renderItem={({ item }) => (
           <View style={styles.courseCard}>
             <Image source={item.img} style={styles.courseImage} />
             <Text style={styles.courseTitle}>{item.title}</Text>
           </View>
         )}
-        numColumns={2}
-        columnWrapperStyle={styles.courseList}
+        contentContainerStyle={styles.courseList}
       />
     </View>
   );
@@ -68,11 +87,8 @@ const styles = StyleSheet.create({
     backgroundColor: "#fff",
     width: "100%",
     flex: 1,
-    top: 0,
     padding: 10,
-    paddingBottom: 25,
     paddingTop: 45,
-    marginHorizontal: 0,
   },
   header: {
     flexDirection: "row",
@@ -81,12 +97,16 @@ const styles = StyleSheet.create({
     paddingHorizontal: 20,
     marginBottom: 10,
   },
-  headerText: { fontSize: 24, fontWeight: "bold", paddingBottom: 10 },
+  headerText: { 
+    fontSize: 24, 
+    fontWeight: "bold", 
+    paddingBottom: 10 
+  },
   searchContainer: {
     flexDirection: "row",
     alignItems: "center",
     paddingHorizontal: 20,
-    marginBottom: 30,
+    marginBottom: 20,
   },
   searchBox: {
     flexDirection: "row",
@@ -97,11 +117,26 @@ const styles = StyleSheet.create({
     paddingHorizontal: 10,
     paddingVertical: 5,
   },
-  searchInput: { flex: 1, marginLeft: 5 },
-  filterButton: { marginLeft: 10 },
-  courseList: { justifyContent: "space-between", paddingHorizontal: 10 },
-  courseCard: { width: "48%", marginBottom: 15, alignItems: "center" },
-  courseImage: { width: 100, height: 100, borderRadius: 10 },
+  searchInput: { 
+    flex: 1, 
+    marginLeft: 5 
+  },
+  courseList: { 
+    paddingHorizontal: 10 
+  },
+  row: {
+    justifyContent: "space-between",
+  },
+  courseCard: { 
+    width: "48%", 
+    marginBottom: 15, 
+    alignItems: "center" 
+  },
+  courseImage: { 
+    width: 100, 
+    height: 100, 
+    borderRadius: 10 
+  },
   courseTitle: {
     textAlign: "center",
     marginTop: 5,

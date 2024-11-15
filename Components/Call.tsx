@@ -1,34 +1,42 @@
-import React from "react";
+import React, { useState } from "react";
 import { View, Text, ScrollView, StyleSheet, TextInput, TouchableOpacity } from "react-native";
 import Icon from "react-native-vector-icons/FontAwesome";
 
-function CallComponent() {
-  const contacts = [{
-    phoneNumber: '5567992030',
-    name: 'Bomberos Cancun',
-  },{
-    phoneNumber: '5567982070',
-    name: 'Cruz Roja Cancun',
-  },{
-    phoneNumber: '9985674567',
-    name: 'Policia Cancun',
-  },{
-    phoneNumber: '9028765432',
-    name: 'Bomberos Cancun',
-  }
-];
+const contacts = [{
+  phoneNumber: '5567992030',
+  name: 'Bomberos Cancun',
+},{
+  phoneNumber: '5567982070',
+  name: 'Cruz Roja Cancun',
+},{
+  phoneNumber: '9985674567',
+  name: 'Policia Cancun',
+},{
+  phoneNumber: '9028765432',
+  name: 'Bomberos Cancun',
+}];
 
-  const searchFilterFunction = (text: any) => {
-    console.log(text);
+function CallComponent() {
+
+
+  const [searchText, setSearchText] = useState('');
+  const [filteredContacts, setFilteredContacts] = useState(contacts);
+
+  const searchFilterFunction = (text: string) => {
+    setSearchText(text);
+    const newData = contacts.filter(item => {
+      const itemData = `${item.name.toUpperCase()} ${item.phoneNumber}`;
+      const textData = text.toUpperCase();
+      return itemData.indexOf(textData) > -1;
+    });
+    setFilteredContacts(newData);
   };
 
   return (
     <ScrollView style={styles.container}>
-      
       <View style={styles.header}>
         <Text style={styles.title}>Directorio</Text>
       </View>
-
 
       <View style={styles.searchContainer}>
         <View style={styles.searchBox}>
@@ -38,6 +46,7 @@ function CallComponent() {
             placeholder="¿En dónde estás?"
             placeholderTextColor="#888"
             onChangeText={text => searchFilterFunction(text)}
+            value={searchText}
           />
         </View>
         <TouchableOpacity style={styles.filterButton}>
@@ -45,14 +54,12 @@ function CallComponent() {
         </TouchableOpacity>
       </View>
 
-
-      {contacts.map((contact, index) => (
+      {filteredContacts.map((contact, index) => (
         <View key={index} style={styles.contactCard}>
           <View>
-          <Text style={styles.contactPhone}>{contact.phoneNumber}</Text>
-          <Text style={styles.contactName}>{contact.name}</Text>
+            <Text style={styles.contactPhone}>{contact.phoneNumber}</Text>
+            <Text style={styles.contactName}>{contact.name}</Text>
           </View>
-          
           <Icon name="phone" size={20} color="#BE1622" style={{alignSelf:'center'}}  />
         </View>
       ))}

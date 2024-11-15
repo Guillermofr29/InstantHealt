@@ -4,6 +4,7 @@ import { Image, ScrollView, TouchableOpacity, TextInput, Text, View, StyleSheet,
 import { BlurView } from "expo-blur";
 import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
 import { initializeApp } from "firebase/app";
+import {getFirestore, doc, setDoc} from "firebase/firestore";
 import { firebaseConfig } from "../firebaseConfig";
 import { router } from "expo-router";
 
@@ -12,18 +13,30 @@ const uri = require("../assets/images/loginfondo.jpeg");
 const Register: React.FC<{ navigation: any }> = ({ navigation }) => {
   const [email, setEmail] = React.useState("");
   const [password, setPassword] = React.useState("");
+  const [name, setName] = React.useState("");
+  const [phone, setPhone] = React.useState("");
+  const [age, setAge] = React.useState<string>("");
   const app = initializeApp(firebaseConfig);
   const auth = getAuth(app);
+  const db = getFirestore(app);
 
   const handleCreateAccount = () => {
     createUserWithEmailAndPassword(auth, email, password)
-      .then((userCredential) => {
+      .then(async (userCredential) => {
         console.log("Usuario creado");
         const user = userCredential.user;
         console.log(user);
+
+        // Crear un nuevo documento en Firestore con el UID del usuario
+        await setDoc(doc(db, 'Usuarios', user.uid), {
+          nombre: name,
+          edad: Number(age),
+          tel: phone,
+          correo: email
+        });
+
         Alert.alert("Usuario", "Usuario creado exitosamente");
-        navigation.navigate("Main");
-        
+        navigation.navigate("Main"); // Navigate to the main screen
       })
       .catch((error) => {
         console.log(error);
@@ -68,6 +81,41 @@ const Register: React.FC<{ navigation: any }> = ({ navigation }) => {
                 style={styles.input}
                 placeholder="Contraseña"
                 secureTextEntry={true}
+              />
+            </View>
+            <View>
+              <Text style={{ fontSize: 20, fontWeight: "800", color: "white", textAlign: "center" }}>
+                Nombre
+              </Text>
+              <TextInput
+                style={styles.input}
+                placeholder="Nombre"
+                value={name}
+                onChangeText={setName}
+              />
+            </View>
+            <View>
+              <Text style={{ fontSize: 20, fontWeight: "800", color: "white", textAlign: "center" }}>
+                Edad
+              </Text>
+              <TextInput
+                style={styles.input}
+                placeholder="Edad"
+                value={age ? age.toString() : ''}
+                onChangeText={(text) => setAge(text)}
+                keyboardType="numeric"
+              />
+            </View>
+            <View>
+              <Text style={{ fontSize: 20, fontWeight: "800", color: "white", textAlign: "center" }}>
+                Telefono
+              </Text>
+              <TextInput
+                style={styles.input}
+                placeholder="9942030222"
+                value={phone ? phone.toString() : ''}
+                onChangeText={(text) => setPhone(text)}
+                keyboardType="numeric"
               />
             </View>
             <TouchableOpacity

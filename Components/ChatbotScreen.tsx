@@ -4,7 +4,7 @@ import { View, TextInput, Button, Text, StyleSheet, ScrollView, FlatList, Keyboa
 import { GoogleGenerativeAI } from '@google/generative-ai';
 import { Icon } from 'react-native-elements';
 
-const apiKey = process.env.API_KEY || 'AIzaSyC1vQgXDTZERZX1gaJGMhC8_irbAqjKauQ'; 
+const apiKey = process.env.API_KEY || 'AIzaSyDDNrzx35UD9rkvAyVVHHX69ZPF-PDPq_4'; 
 const genAI = new GoogleGenerativeAI(apiKey);
 const model = genAI.getGenerativeModel({ model: 'gemini-1.5-flash' }); 
 

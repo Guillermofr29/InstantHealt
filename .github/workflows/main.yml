@@ -1,0 +1,58 @@
+name: Pipeline CI InstaHealth Expo
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  setup-environment:
+    name: Configurar el entorno
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Descargar el código
+        uses: actions/checkout@v3
+
+      - name: Configurar Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 16
+
+      - name: Instalar dependencias
+        run: npm install
+
+  notify:
+    name: Notificar a Slack
+    runs-on: ubuntu-latest
+    if: always()  # Notificar siempre, tanto en caso de éxito como de fallo
+
+    steps:
+      - name: Notificar el estado del pipeline a Slack
+        uses: slackapi/slack-github-action@v1.23.0
+        with:
+          slack-bot-token: ${{ secrets.SLACK_BOT_TOKEN }}
+          channel-id: ${{ secrets.SLACK_CHANNEL_ID }}
+          custom-payload: |
+            {
+              "text": "Pipeline CI en el repositorio: ${{ github.repository }} en la rama: ${{ github.ref_name }} ha terminado con el estado: ${{ job.status }}.",
+              "attachments": [
+                {
+                  "color": "${{ job.status == 'success' && 'good' || 'danger' }}",
+                  "title": "Detalles del Pipeline CI",
+                  "fields": [
+                    {
+                      "title": "Repositorio",
+                      "value": "${{ github.repository }}"
+                    },
+                    {
+                      "title": "Rama",
+                      "value": "${{ github.ref_name }}"
+                    }
+                  ]
+                }
+              ]
+            }

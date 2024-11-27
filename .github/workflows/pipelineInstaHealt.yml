@@ -1,0 +1,107 @@
+name: Pipeline CI InstaHealt
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  setup-environment:
+    name: Configuración del entorno Node.js
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Descargar el código
+        uses: actions/checkout@v3
+
+      - name: Configurar Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 16
+
+      - name: Instalar dependencias
+        run: yarn install
+
+  build:
+    name: Crear una aplicación React Native
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Descargar el código
+        uses: actions/checkout@v3
+
+      - name: Configurar Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 16
+
+      - name: Instalar Dependencias
+        run: yarn install
+
+      - name: Build Android
+        run: |
+          cd android
+          ./gradlew assembleDebug
+
+      - name: Crear en iOS (opcional)
+        if: runner.os == 'macOS'
+        run: |
+          cd ios
+          xcodebuild -workspace App.xcworkspace \
+            -scheme App \
+            -sdk iphonesimulator \
+            -derivedDataPath build
+
+  test:
+    name: Ejecutar pruebas
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Descargar el código
+        uses: actions/checkout@v3
+
+      - name: Descargar el código
+        uses: actions/setup-node@v3
+        with:
+          node-version: 16
+
+      - name: Instalar Dependencias
+        run: yarn install
+
+      - name: Run Tests
+        run: yarn test
+
+  notify:
+    name: Notificar a Slack
+    runs-on: ubuntu-latest
+    if: failure() # Notificar solo en caso de fallos
+
+    steps:
+      - name: Notificar el fallo a Slack
+        uses: slackapi/slack-github-action@v1.23.0
+        with:
+          slack-bot-token: ${{ secrets.SLACK_BOT_TOKEN }}
+          channel-id: ${{ secrets.SLACK_CHANNEL_ID }}
+          custom-payload: |
+            {
+              "text": "🚨 El Pipeline CI falló en el repositorio:  ${{ github.repository }} en la rama:  ${{ github.ref_name }}.\nDetalles del error: ${{ steps.notify.outputs.failure }}.",
+              "attachments": [
+                {
+                  "color": "danger",
+                  "title": "Detalles del Pipeline CI",
+                  "fields": [
+                    {
+                      "title": "Repositorio",
+                      "value": "${{ github.repository }}"
+                    },
+                    {
+                      "title": "Rama",
+                      "value": "${{ github.ref_name }}"
+                    }
+                  ]
+                }
+              ]
+            }
